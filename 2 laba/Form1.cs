@@ -59,7 +59,18 @@ namespace _2_laba
               textBox1.Text ="";
               textBox2.Text ="";
               textBox3.Text ="";
+
         }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                textBox3.Focus();
+               // button2_Click;
+            }
+        }
+
     }
 
 
