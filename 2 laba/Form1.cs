@@ -19,16 +19,36 @@ namespace _2_laba
 
         private void button1_Click(object sender, EventArgs e)
         {
-             int n = int.Parse(textBox3.Text);
-             string s = textBox1.Text;
-             textBox2.Text= Logic.Compare(n,s);
+             int n,a;
+             string s;
+            try
+            {
+                 n = int.Parse(textBox3.Text);
+                 s = textBox1.Text;
+                 string[] subs = s.Split(' ');
+                for(int i = 0; i < subs.Length; i++)
+                {
+                    a = int.Parse(subs[i]);
+                }
+            }
+            catch (FormatException)
+            {
+                // сообщение об ошибке
+                MessageBox.Show("Некорректный ввод. В первое поле можно вводить только числа и пробелы между ними (в конце и в начале пробелы запрещены). Во второе поле можно вводить только одно число.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBox1.Text = "";
+                textBox2.Text = "";
+                textBox3.Text = "";
+                return; // а затем прерываем обработчик
+            }
+            //----
+            textBox2.Text= Logic.Compare(n,s);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
               textBox1.Text ="";
               textBox2.Text ="";
-              textBox3.Text = "";
+              textBox3.Text ="";
         }
     }
 
@@ -39,7 +59,7 @@ namespace _2_laba
         {
             string outText="";
             string[] subs = s.Split(' ');
-            int count = 0;
+            int count;
             //создаём массив для хранения индексов элементов
             int[] arr = new int[n];
             /*перебираем массив цикл идёт до subs.Length-n+1 поскольку в дальнейшем будет
