@@ -67,10 +67,17 @@ namespace _2_laba
             if (e.KeyChar == (char)Keys.Enter)
             {
                 textBox3.Focus();
-               // button2_Click;
+               // button1_Click( sender, e);
             }
         }
 
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == (char)Keys.Enter)
+            {  
+                 button1_Click( sender, e);
+            }
+        }
     }
 
 
@@ -109,9 +116,16 @@ namespace _2_laba
                 if (count + 1 == n)
                 { 
 
-                    foreach (int t in arr)
+                    for( i = 0; i < arr.Length; i++)
                     {
-                        outText = outText + t + " ";
+                        if (i == arr.Length - 1)
+                        {
+                            outText = outText + arr[i];
+                        }
+                        else
+                        {
+                            outText = outText + arr[i] + " ";
+                        }
                     }
                     break;
                 }
