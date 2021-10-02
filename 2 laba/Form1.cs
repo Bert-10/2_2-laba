@@ -15,12 +15,15 @@ namespace _2_laba
         public Form1()
         {
             InitializeComponent();
+            textBox1.Text = Properties.Settings.Default.s.ToString();
+            textBox3.Text = Properties.Settings.Default.n.ToString();
+            textBox2.Text = Properties.Settings.Default.outText.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
              int n,a;
-             string s;
+             string s,outText;
             try
             {
                  n = int.Parse(textBox3.Text);
@@ -40,8 +43,15 @@ namespace _2_laba
                 textBox3.Text = "";
                 return; // а затем прерываем обработчик
             }
+           
+            outText= Logic.Compare(n,s);
+            textBox2.Text = outText;
             //----
-            textBox2.Text= Logic.Compare(n,s);
+            Properties.Settings.Default.s = s;
+            Properties.Settings.Default.n = n;
+            Properties.Settings.Default.outText = outText;
+            Properties.Settings.Default.Save();
+            //----
         }
 
         private void button2_Click(object sender, EventArgs e)
