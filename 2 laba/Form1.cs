@@ -19,16 +19,70 @@ namespace _2_laba
 
         private void button1_Click(object sender, EventArgs e)
         {
-           // int n = int.Parse(textBox1.Text);
-          //  textBox2.Text= Logic.Compare(n);
+             int n = int.Parse(textBox3.Text);
+             string s = textBox1.Text;
+             textBox2.Text= Logic.Compare(n,s);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-          //  textBox1.Text ="";
-          //  textBox2.Text ="";
+              textBox1.Text ="";
+              textBox2.Text ="";
+              textBox3.Text = "";
         }
     }
 
-    
+
+    public class Logic
+    {
+        public static string Compare(int n,string s)
+        {
+            string outText="";
+            string[] subs = s.Split(' ');
+            int count = 0;
+            //создаём массив для хранения индексов элементов
+            int[] arr = new int[n];
+            /*перебираем массив цикл идёт до subs.Length-n+1 поскольку в дальнейшем будет
+             * ещё один цикл for в котором будет веститсь перебор дальше. subs.Length-n+1
+             * позволяет избежать выхода за пределы массива
+             * */
+            for (int i = 0; i < subs.Length - n + 1; i++)
+            {
+                count = 0;
+
+                for (int j = i; j < n + i - 1; j++)
+                {
+                    if (subs[j] == subs[j + 1])
+                    {
+
+                        arr[count] = j;
+                        count++;
+
+                        if (j == n + i - 2)
+                        {
+                            arr[count] = j + 1;
+                        }
+
+                    }
+                }
+                if (count + 1 == n)
+                { 
+
+                    foreach (int t in arr)
+                    {
+                        outText = outText + t + " ";
+                    }
+                    break;
+                }
+            }
+
+            if (arr[n - 1] == 0)
+            {
+                outText="Возможных пар не обнаружено";
+            }
+
+            return outText;
+        }           
+        
+    }
 }
