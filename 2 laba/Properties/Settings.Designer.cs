@@ -25,9 +25,10 @@ namespace _2_laba.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public int n {
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string n {
             get {
-                return ((int)(this["n"]));
+                return ((string)(this["n"]));
             }
             set {
                 this["n"] = value;

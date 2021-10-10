@@ -48,7 +48,7 @@ namespace _2_laba
             textBox2.Text = outText;
             //----
             Properties.Settings.Default.s = s;
-            Properties.Settings.Default.n = n;
+            Properties.Settings.Default.n = n.ToString();
             Properties.Settings.Default.outText = outText;
             Properties.Settings.Default.Save();
             //----
